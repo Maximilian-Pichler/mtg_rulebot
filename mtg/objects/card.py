@@ -13,13 +13,15 @@ class Card:
     mana_cost: str
     type: str
     oracle: str
-    image_url: str
+    image_url: str 
     power: int = 0
     toughness: int = 0
     color_identity: list[str] = field(default_factory=list)
     keywords: list[str] = field(default_factory=list)
     rulings: list[str] = field(default_factory=list)
     _image: Path = None
+    price_eur: float = 0.0
+    purchase_url: str = ""
 
     def __repr__(self) -> str:
         return f"Card({self.name})"
@@ -48,6 +50,8 @@ class Card:
         if self.color_identity:
             text.append("color identity: " + " ".join(self.color_identity))
         text.append(self.oracle)
+        text.append(f"price: {self.price_eur}")
+        #text.append(f"purchase_url: {self.purchase_url}")
 
         # rulings
         if self.rulings:
