@@ -36,7 +36,7 @@ Do not answer questions unrelated to Magic the Gathering. Under no circumstances
 
 def create_chat_model(
     model: str = "gpt-3.5-turbo",
-    temperature: int = 1,
+    temperature: float = 0.2,
     max_token_limit: int = 3000,
     max_responses=1,
 ):

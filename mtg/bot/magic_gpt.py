@@ -35,6 +35,9 @@ class MagicGPT:
                 ]
             ]
 
+    def set_temperature(self, temperature):
+        self.temperature
+
     def _ask(self, query):
         # no user system yet so clear memory after every hour
         if datetime.now() - self._last_updated > timedelta(hours=1):
