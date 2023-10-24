@@ -31,9 +31,9 @@ class CardDB:
         for card_data in data:
             if (card_data["layout"] != "normal") or (
                 card_data["type_line"] in BLOCKED_CARD_TYPES) or (
-                "purchase_uris" not in card_data):
+                "content_warning" in card_data) or (
+                "paper" not in card_data["games"]):
                 continue
-            print(card_data.get("name"))
             all_sets.add(card_data.get("set_name"))
             all_cards.append(
                 Card(
@@ -52,7 +52,6 @@ class CardDB:
                     purchase_url=card_data["purchase_uris"].get("cardmarket"),
                 )
             )
-            print(card_data.get("name"))
         logger.info(f"loaded {len(all_cards)} cards...")
 
         # init variables
@@ -102,7 +101,7 @@ class CardDB:
                     if role == "assistant":
                         text += f"[{token.text}]({card.image_url}) ([Cardmarket ~€{card.price_eur}]({card.purchase_url}))"
                     else:
-                        text += f"[{card.name}]({card.image_url})  ([Cardmarket ~€{card.price_eur}]({card.purchase_url}))"
+                        text += f"[{card.name}]({card.image_url})  ([Cardmarket €{card.price_eur}]({card.purchase_url}))"
                 text += token.whitespace_
             else:
                 # add token as text

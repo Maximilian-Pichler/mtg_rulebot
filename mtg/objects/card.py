@@ -13,7 +13,7 @@ class Card:
     mana_cost: str
     type: str
     oracle: str
-    image_url: str 
+    image_url: str
     power: int = 0
     toughness: int = 0
     color_identity: list[str] = field(default_factory=list)
@@ -51,7 +51,7 @@ class Card:
             text.append("color identity: " + " ".join(self.color_identity))
         text.append(self.oracle)
         text.append(f"price: {self.price_eur}")
-        #text.append(f"purchase_url: {self.purchase_url}")
+        # text.append(f"purchase_url: {self.purchase_url}")
 
         # rulings
         if self.rulings:
